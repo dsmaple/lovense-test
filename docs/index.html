@@ -3,27 +3,19 @@
 integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script langauge="javascript">
 
-function runit() {
+async function runit() {
 	console.log("here");
-	$.ajax({
-		    type : "get",
-		    url : "https://api.lovense.com/api/lan/getToys",
-		    dataType : "jsonp",
-		    success : function(data){
-				    $('#foo').val(data);
-			        },
-		    error:function(e){
-			            console.error(e);
-			        }
-	});
-
+	fetch("https://api.lovense.com/api/lan/getToys")
+		.then( function(res) => {
+			document.getElementById('foo').value = response;
+		});
 }
 
 </script>
 <body>
 <h1>hello</h1>
 
-<p><a href="#" onClick="runit();">click me</a></p>
+<p><a href="#" onClick="await runit();">click me</a></p>
 
 <p><textarea cols="100" rows="40" id="foo">
 some text
